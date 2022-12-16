@@ -1,1 +1,10 @@
-<p>header works!</p>
+
+<h1>Calendar</h1>
+<hr />
+
+<button class="btn-arrow" (click)="go(-1)"> &lt; </button>
+    <span class="date-header">{{dateService.date | moment}}</span>
+<button class="btn-arrow" (click)="go(1)"> &gt; </button>
+
+<button mat-raised-button color="primary" class="today-btn"> Today</button>
+

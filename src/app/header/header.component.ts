@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DateService } from './../shared/date.service';
 
 @Component({
   selector: 'app-header',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  constructor(public dateService:DateService) { }
 
   ngOnInit(): void {
   }
 
+  go(dir:number){
+    this.dateService.changeMonth(dir)
+  }
 }

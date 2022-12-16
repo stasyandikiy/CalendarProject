@@ -5,6 +5,7 @@ import {MatButtonModule} from '@angular/material/button';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { MomentPipe } from './shared/moment.pipe';
 import { HeaderComponent } from './header/header.component';
 import { AbsenceComponent } from './absence/absence.component';
 import { CalendarComponent } from './calendar/calendar.component';
@@ -14,11 +15,12 @@ import { CalendarComponent } from './calendar/calendar.component';
     AppComponent,
     HeaderComponent,
     AbsenceComponent,
-    CalendarComponent
+    CalendarComponent,
+    MomentPipe
     
   ],
   imports: [
-    BrowserModule,
+  BrowserModule,
     AppRoutingModule,
     MatButtonModule
   ],

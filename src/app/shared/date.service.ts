@@ -5,7 +5,11 @@ import * as moment from "moment";
     providedIn: 'root'
 })
 
-export class DataService{
-    public date = moment();
-    
+export class DateService{
+    public date:moment.Moment = moment();
+        
+    changeMonth(dir: number){
+        this.date.add(dir, "month")
+    }
+
 }
