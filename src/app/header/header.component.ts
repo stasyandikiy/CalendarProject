@@ -14,6 +14,6 @@ export class HeaderComponent implements OnInit {
   }
 
   go(dir:number){
-    this.dateService.changeMonth(dir)
+    this.dateService.changeMonth(dir);
   }
 }

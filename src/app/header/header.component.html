@@ -3,7 +3,7 @@
 <hr />
 
 <button class="btn-arrow" (click)="go(-1)"> &lt; </button>
-    <span class="date-header">{{dateService.date | moment}}</span>
+    <span class="date-header">{{dateService.date | async | moment}}</span>
 <button class="btn-arrow" (click)="go(1)"> &gt; </button>
 
 <button mat-raised-button color="primary" class="today-btn"> Today</button>
