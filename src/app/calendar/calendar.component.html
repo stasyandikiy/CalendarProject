@@ -1,0 +1,29 @@
+<table class="table">
+    <thead>
+    <tr>
+        <th>Mon</th>
+        <th>Tue</th>
+        <th>Wed</th>
+        <th>Thu</th>
+        <th>Fri</th>
+        <th>Sat</th>
+        <th>Sun</th>
+
+    </tr>
+    </thead>
+    <tbody><!--<div *ngIf="AbsenceScheduleKeys.indexOf(day.value.format('YYYY-MM-DD')) > -1" class="time-off">1 day</div>-->
+        <tr *ngFor="let week of calendar">
+            <ng-container >
+                <td *ngFor="let day of week.days; let i = index;"
+                [class.disabled]="day.disabled"
+                (click)="select(day.value)">
+                    <span 
+                        [class.selected]="day.selected"
+                        [class.active]="day.active"
+                    >{{day.value | moment: 'D'}}</span>
+                </td>
+            </ng-container>
+        </tr>
+    </tbody>
+</table>
+
