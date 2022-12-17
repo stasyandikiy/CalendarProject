@@ -6,5 +6,6 @@
     <span class="date-header">{{dateService.date | async | moment}}</span>
 <button class="btn-arrow" (click)="go(1)"> &gt; </button>
 
-<button mat-raised-button color="primary" class="today-btn"> Today</button>
+<button mat-raised-button color="primary" class="today-btn" (click)="today()"> Today</button>
+<button mat-raised-button color="accent" class="today-btn"> Date Picker </button>
 

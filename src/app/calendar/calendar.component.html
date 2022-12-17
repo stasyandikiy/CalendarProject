@@ -15,7 +15,8 @@
         <tr *ngFor="let week of calendar">
             <ng-container >
                 <td *ngFor="let day of week.days; let i = index;"
-                [class.disabled]="day.disabled">
+                [class.disabled]="day.disabled"
+                (click)="select(day.value)">
                     <span 
                         [class.selected]="day.selected"
                         [class.active]="day.active"

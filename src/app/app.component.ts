@@ -8,6 +8,8 @@ import * as moment from "moment";
 })
 export class AppComponent {
 
+  modalWindow: boolean = false;
+
   constructor(){
 
   }
