@@ -1,0 +1,56 @@
+
+.table{
+    display: inline-block;
+    width: 66%;
+    margin-bottom: 1rem;
+    border-collapse: collapse;
+    td,th{
+        background-color: rgb(193, 191, 191);
+        height: 40px;
+        width: 130px;
+        border: 1px solid #000;
+    }
+    td{
+        position: relative;
+        background-color: white;
+        text-align: right;
+        font-weight: 700;
+        height: 110px;
+        transition: all .2s;
+        &.disabled{
+            opacity: .5;
+        }
+        &:hover:not(.disabled){
+            background-color: #eee;
+            cursor: pointer;
+        }
+    }
+    .active{
+        color: blue;
+        font-weight: bold;
+    }
+    .selected{
+        color: red;
+    }
+}
+
+
+.block-entry{
+    display: inline-block;
+    position: absolute;
+    margin-left: 10px;
+    top: 170px;
+    width: 400px;
+    border: 1px solid black;
+    border-radius: 15px;
+    p{
+        padding: 0 10px;
+        i{
+            margin-left: 5px;
+        }
+    }
+    h2{
+        cursor: pointer;
+        margin-left: 10px;
+    }
+}
