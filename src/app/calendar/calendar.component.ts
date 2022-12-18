@@ -20,13 +20,15 @@ interface Week {
 })
 export class CalendarComponent implements OnInit {
 
+
+
+
   calendar: Week[] | undefined
 
   constructor(public dateService: DateService) { }
 
-
   ngOnInit(): void {
-    this.dateService.date.subscribe(this.generate.bind(this))
+    this.dateService.date.subscribe(this.generate.bind(this));
   }
   generate(now: moment.Moment){
     const startDay = now.clone().startOf('month').startOf('week');
@@ -55,10 +57,12 @@ export class CalendarComponent implements OnInit {
     
     this.calendar = calendar;
 
-  }
-
+  }//Генерация календаря
 
   select(day: moment.Moment) {
-    this.dateService.changeDate(day)
-  }
+    this.dateService.changeDate(day);
+  }//Выбраная дата
+
+
+
 }

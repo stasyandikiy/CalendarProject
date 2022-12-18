@@ -33,3 +33,24 @@
         color: red;
     }
 }
+
+
+.block-entry{
+    display: inline-block;
+    position: absolute;
+    margin-left: 10px;
+    top: 170px;
+    width: 400px;
+    border: 1px solid black;
+    border-radius: 15px;
+    p{
+        padding: 0 10px;
+        i{
+            margin-left: 5px;
+        }
+    }
+    h2{
+        cursor: pointer;
+        margin-left: 10px;
+    }
+}

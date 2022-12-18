@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { DateService } from './../shared/date.service';
 import * as moment from 'moment';
 
@@ -10,13 +10,12 @@ import * as moment from 'moment';
 export class HeaderComponent {
 
   constructor(public dateService:DateService) { }
-
-  modalWindow: boolean = false;
-
+  
   go(dir:number){
     this.dateService.changeMonth(dir);
   }
   today(){
-    this.dateService.changeDate(moment())
+    this.dateService.changeDate(moment());
   }
+
 }

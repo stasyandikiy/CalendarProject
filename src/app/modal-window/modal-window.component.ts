@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-modal-window',
@@ -7,9 +8,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ModalWindowComponent implements OnInit {
 
-  constructor() { }
+  commentControl: FormControl;
+  typeAbsence: FormControl;
+  dateBefore: FormControl;
+  dateAfter: FormControl;
 
+  constructor() { 
+    this.commentControl = new FormControl('');
+    this.typeAbsence = new FormControl('');
+    this.dateBefore = new FormControl('');
+    this.dateAfter = new FormControl('');
+  }
+  modalWindow:boolean = false;
+  
   ngOnInit(): void {
+    this.commentControl.valueChanges.subscribe((value)=>console.log(value));
+    this.typeAbsence.valueChanges.subscribe((value)=>console.log(value));
+    this.dateBefore.valueChanges.subscribe((value)=>console.log(value));
+    this.dateAfter.valueChanges.subscribe((value)=>console.log(value));
   }
 
 }

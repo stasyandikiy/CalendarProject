@@ -1,21 +1,24 @@
-<div class="block-absence">
+<button mat-raised-button color="accent" class="today-btn" (click)="modalWindow=!modalWindow"> Date Picker </button>
+
+<div class="block-absence" *ngIf="modalWindow">
     <h3>Request Absence</h3>
 
     <span>What type of absence?</span>
     <mat-form-field>
         <mat-label></mat-label>
-        <mat-select > <!--[(value)]="selectedValue"-->
+        <mat-select [formControl]="typeAbsence"> <!--[(value)]="selectedValue"-->
             <mat-option value="Sick">Sick</mat-option>
             <mat-option value="Vacation ">Vacation</mat-option>
         </mat-select>
     </mat-form-field>
 
-    <span >From - To</span>
-    <input type="date" > <input type="date">
-<!--[formControl]="dateBefore"--><!--[formControl]="dateAfter"-->
-    <span>Comment</span>
-    <textarea placeholder="Add a comment.."></textarea>
+    <span>From - To</span>
+    <input type="date" [formControl]="dateBefore"> 
+    <input type="date" [formControl]="dateAfter">
 
-    <button mat-raised-button color="basic" type="submit"> Cancel</button>
+    <span>Comment</span>
+    <textarea [formControl]="commentControl" placeholder="Add a comment.."></textarea>
+
+    <button mat-raised-button color="basic" type="submit" (click)="modalWindow=!modalWindow"> Cancel</button>
     <button mat-raised-button color="accent" type="submit"> Request </button>
 </div>
