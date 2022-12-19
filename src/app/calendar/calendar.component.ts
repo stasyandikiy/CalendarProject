@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DateService } from './../shared/date.service';
 import * as moment from 'moment';
+import { from } from 'rxjs';
 
 interface Day {
   value: moment.Moment,
@@ -20,16 +21,15 @@ interface Week {
 })
 export class CalendarComponent implements OnInit {
 
-
-
-
-  calendar: Week[] | undefined
-
-  constructor(public dateService: DateService) { }
+  constructor(public dateService: DateService) {}
+  absenceDateKeys:any = this.dateService.absenceDate.reduce((container:any, obj:any) => [...container, ...Object.keys(obj)], []);
+  
+  calendar: Week[] | undefined;
 
   ngOnInit(): void {
     this.dateService.date.subscribe(this.generate.bind(this));
   }
+
   generate(now: moment.Moment){
     const startDay = now.clone().startOf('month').startOf('week');
     const endDay = now.clone().endOf('month').endOf('week');
@@ -63,6 +63,10 @@ export class CalendarComponent implements OnInit {
     this.dateService.changeDate(day);
   }//Выбраная дата
 
+  update(){
+    this.absenceDateKeys = this.dateService.absenceDate.reduce((container:any, obj:any) => [...container, ...Object.keys(obj)], []);
+    this.absenceDateKeys = this.absenceDateKeys.filter((x:any, i:any) => this.absenceDateKeys.indexOf(x) === i);
+  } 
 
 
 }

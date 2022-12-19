@@ -20,5 +20,5 @@
     <textarea [formControl]="commentControl" placeholder="Add a comment.."></textarea>
 
     <button mat-raised-button color="basic" type="submit" (click)="modalWindow=!modalWindow"> Cancel</button>
-    <button mat-raised-button color="accent" type="submit"> Request </button>
+    <button mat-raised-button color="primary" type="submit" (click)="requestAbsence()"> Request </button>
 </div>

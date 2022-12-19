@@ -17,6 +17,7 @@
                 <td *ngFor="let day of week.days; let i = index;"
                 [class.disabled]="day.disabled"
                 (click)="select(day.value)">
+                <div *ngIf="absenceDateKeys.indexOf(day.value.format('YYYY-MM-DD')) > -1" class="time-off">1 day</div>
                     <span 
                         [class.selected]="day.selected"
                         [class.active]="day.active"

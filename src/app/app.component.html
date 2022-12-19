@@ -4,16 +4,14 @@
   </header>
 
   <div class="modal-window">
-      <app-modal-window></app-modal-window>
+      <app-modal-window (updateAbsenceArray)="modalFunc.update()"></app-modal-window>
   </div>
 
   <div class="calendar">
-    <app-calendar></app-calendar>
+    <app-calendar #modalFunc></app-calendar>
   </div>
 
   
-  <div class="absence-type">
 
-  </div>
 
 </div>

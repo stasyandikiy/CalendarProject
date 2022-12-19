@@ -10,7 +10,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MomentPipe } from './shared/moment.pipe';
 import { HeaderComponent } from './header/header.component';
-import { AbsenceComponent } from './absence/absence.component';
 import { CalendarComponent } from './calendar/calendar.component';
 import { ModalWindowComponent } from './modal-window/modal-window.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -19,7 +18,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
   declarations: [
     AppComponent,
     HeaderComponent,
-    AbsenceComponent,
     CalendarComponent,
     MomentPipe,
     ModalWindowComponent
