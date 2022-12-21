@@ -14,13 +14,15 @@ import { CalendarComponent } from './calendar/calendar.component';
 import { ModalWindowComponent } from './modal-window/modal-window.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ModalDeleteComponent } from './calendar/modal-delete/modal-delete.component';
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     CalendarComponent,
     MomentPipe,
-    ModalWindowComponent
+    ModalWindowComponent,
+    ModalDeleteComponent
     
   ],
   imports: [

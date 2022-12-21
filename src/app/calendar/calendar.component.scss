@@ -40,7 +40,7 @@
     top: 10px;
     background: red;
     width: 90%;
-    height: 20px;
+    height: 30px;
 }
 
 .block-entry{
@@ -61,4 +61,16 @@
         cursor: pointer;
         margin-left: 10px;
     }
+    .remainder{
+        display: block;
+        position: absolute;
+        right: 10px;
+        top: 5px;
+        padding: 8px;
+        border-radius: 15px;
+        background-color: rgb(115, 193, 253);
+    }
+}
+.block-entry-sick{
+    top: 350px;
 }

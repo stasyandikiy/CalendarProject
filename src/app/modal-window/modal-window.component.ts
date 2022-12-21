@@ -13,7 +13,7 @@ export class ModalWindowComponent {
   @Output() updateAbsenceArray = new EventEmitter();
   modalWindow:boolean = false;
     
-  commentControl: FormControl;
+  commentControl:  FormControl;
   typeAbsence: FormControl;
   dateBefore: FormControl;
   dateAfter: FormControl;
@@ -29,16 +29,24 @@ export class ModalWindowComponent {
     let dateStart = moment(this.dateBefore.value);
     let dateEnd = moment(this.dateAfter.value);
     let absenceDateCount = (dateEnd.diff(dateStart, 'days'));//Количество дней отгула
-  
-    if(absenceDateCount < 10 && absenceDateCount > -1 && this.typeAbsence.value!= ''){
+
+    let dateDouble = false;//Проверка на даты, которые уже в отгуле
+    this.dateService.absenceDate.forEach((el:any) => {
+      if(el[this.dateAfter.value] || el[this.dateBefore.value]){
+        dateDouble = true;
+        alert('Выбраная дата уже занята!')
+      }
+    });
+
+    if(absenceDateCount < 10 && absenceDateCount > -1 && this.typeAbsence.value!= '' && dateDouble == false){
+      this.modalWindow=!this.modalWindow;
       let count = 0;
 
       //Запись даты и вида отгула в массив      
-      this.dateService.addAbsence(dateStart.format('YYYY-MM-DD'), this.typeAbsence.value);
+      this.dateService.addAbsence(dateStart.format('YYYY-MM-DD'), this.typeAbsence.value, this.commentControl.value);
       while (count < absenceDateCount) {
         let key = dateStart.add(1, 'd').format('YYYY-MM-DD');
-        this.dateService.absenceDate[key] = this.typeAbsence.value;
-        this.dateService.addAbsence(key, this.typeAbsence.value);
+        this.dateService.addAbsence(key, this.typeAbsence.value, this.commentControl.value);
         count++;
       }
       this.updateAbsenceArray.emit(null);

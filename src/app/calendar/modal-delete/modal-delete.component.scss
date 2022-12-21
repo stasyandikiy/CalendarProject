@@ -1,0 +1,34 @@
+.block-absence{
+    z-index: 10;
+    position: absolute;
+    top: 30%;
+    background: white;
+    left: 25%;
+    margin-top: -50px;
+    margin-left: 100px;
+    padding: 0 15px;
+    width: 550px;
+    border: 1px solid black;
+    border-radius: 5px;
+    span{
+        margin: 25px 0 10px 0;
+        display:block;
+        font-weight: 700;
+    }
+    textarea{
+        width: 97%;
+        padding: 8px;
+        font-size: 15px;
+        height: 45px;
+        border-radius: 5px;
+    }
+
+    button{
+        position: relative;
+        left: 300px;
+        margin: 12px 5px;
+    }
+}
+
+
+

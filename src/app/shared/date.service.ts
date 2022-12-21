@@ -12,8 +12,12 @@ export class DateService{
 
     absenceDate: any = [];
 
-    addAbsence(date: string, type: string){
-        this.absenceDate.push({[date]: type});
+    addAbsence(date: string, type: string, comment: string){
+       let obj = {
+            [date]: type,
+            commentar: comment
+        };
+        this.absenceDate.push(obj);
     }
 
     changeMonth(dir: number){

@@ -1,0 +1,19 @@
+<div class="block-absence">
+    <h3>Absence Period</h3>
+
+    <span>What type of absence?</span>
+    <mat-form-field>
+        <mat-label>{{deleteDay.type}}</mat-label>
+        <mat-select  disabled></mat-select>
+    </mat-form-field>
+
+    <span>From - To</span>
+    <input type="date" value={{deleteDay.date}} disabled> 
+    <input type="date" value={{deleteDay.date}} disabled>
+
+    <span>Comment</span>
+    <textarea value={{deleteDay.comment}} disabled></textarea>
+
+    <button mat-raised-button color="accent" type="submit" (click)="deleteAbsence()"> Delete Absence</button>
+    <button mat-raised-button color="basic" type="submit" (click)="this.close.emit()"> Close </button>
+</div>

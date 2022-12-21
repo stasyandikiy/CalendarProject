@@ -1,13 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { DateService } from './../shared/date.service';
 import * as moment from 'moment';
-import { from } from 'rxjs';
 
 interface Day {
   value: moment.Moment,
   active: boolean,
   disabled: boolean,
-  selected: boolean
+  selected: boolean,
 }
 
 interface Week {
@@ -19,10 +18,31 @@ interface Week {
   templateUrl: './calendar.component.html',
   styleUrls: ['./calendar.component.scss']
 })
+
 export class CalendarComponent implements OnInit {
 
-  constructor(public dateService: DateService) {}
-  absenceDateKeys:any = this.dateService.absenceDate.reduce((container:any, obj:any) => [...container, ...Object.keys(obj)], []);
+  modalDelete: boolean = false;
+  vacationWindow:boolean = false;
+  sickWindow:boolean = false;
+
+  public deleteDay = {
+      date: '',
+      comment: '',
+      type: ''
+  }//дата кликнутая для удаленая отгула
+
+  setCloseModal(i:any) {
+    this.modalDelete=!this.modalDelete;
+    this.update()
+  }
+
+  constructor(public dateService: DateService) {
+  }
+
+  absenceDateKeys:any = this.dateService.absenceDate.reduce((container:any, obj:any) => [...container, ...Object.keys(obj)], []);//все ключи дат
+  absenceType = this.dateService.absenceDate.flatMap((obj:any) => Object.values(obj));//все значения
+  DateVacation: any = [];//дни отпуска
+  DateSick: any = [];//дни больничного
   
   calendar: Week[] | undefined;
 
@@ -60,13 +80,35 @@ export class CalendarComponent implements OnInit {
   }//Генерация календаря
 
   select(day: moment.Moment) {
-    this.dateService.changeDate(day);
+    this.dateService.changeDate(day); 
+    this.modalDelete=!this.modalDelete;
+    //Информация в обьект для модального окна удаления
+    this.deleteDay.date = day.format('YYYY-MM-DD');
+    this.dateService.absenceDate.forEach((el:any) => {
+      if(el[this.deleteDay.date]){
+        this.deleteDay.comment = el.commentar;
+        let key = String(day.format('YYYY-MM-DD'))
+        this.deleteDay.type = el[key];
+      }
+    });
   }//Выбраная дата
 
   update(){
+    this.absenceDateKeys = [];
     this.absenceDateKeys = this.dateService.absenceDate.reduce((container:any, obj:any) => [...container, ...Object.keys(obj)], []);
     this.absenceDateKeys = this.absenceDateKeys.filter((x:any, i:any) => this.absenceDateKeys.indexOf(x) === i);
+
+    this.absenceType = {};
+    this.absenceType = this.dateService.absenceDate.flatMap((obj:any) => Object.values(obj));
+
+    this.DateVacation = [];
+    this.DateSick = [];
+    this.absenceType.forEach((el:any)=> {
+      if(el == 'Vacation'){
+        this.DateVacation.push(el);
+      }else if(el == 'Sick'){
+        this.DateSick.push(el);
+      }
+    });
   } 
-
-
 }
