@@ -1,0 +1,49 @@
+<table class="table">
+    <thead>
+    <tr>
+        <th>Mon</th>
+        <th>Tue</th>
+        <th>Wed</th>
+        <th>Thu</th>
+        <th>Fri</th>
+        <th>Sat</th>
+        <th>Sun</th>
+
+    </tr>
+    </thead>
+    <tbody><!--<div *ngIf="AbsenceScheduleKeys.indexOf(day.value.format('YYYY-MM-DD')) > -1" class="time-off">1 day</div>-->
+        <tr *ngFor="let week of calendar">
+            <ng-container >
+                <td *ngFor="let day of week.days; let i = index;"
+                [class.disabled]="day.disabled"
+                (click)="select(day.value)">
+                <div *ngIf="absenceDateKeys.indexOf(day.value.format('YYYY-MM-DD')) > -1" class="time-off" 
+                    (click)="modalDelete=!modalDelete">1 day</div>
+                    <span 
+                        [class.selected]="day.selected"
+                        [class.active]="day.active"
+                    >{{day.value | moment: 'D'}}</span>
+                </td>
+            </ng-container>
+        </tr>
+    </tbody>
+</table>
+
+<app-modal-delete [deleteDay]="deleteDay" *ngIf="modalDelete"  (close)="this.setCloseModal($event)"></app-modal-delete>
+
+<div class="block-entry">
+    <h2 (click)="vacationWindow=!vacationWindow"> ▼ Vacation</h2>
+    <span class="remainder">{{10-DateVacation.length}} days left</span>
+    <div *ngIf="vacationWindow">
+        <p><strong>Breakdown for 2022</strong></p>
+        <p>Entitlement<i>10</i> days</p>
+        <p>Taken<i>{{DateVacation.length}}</i> day</p>
+    </div>
+</div>
+<div class="block-entry block-entry-sick">
+    <h2 (click)="sickWindow=!sickWindow"> ▼ Sick</h2>
+    <div *ngIf="sickWindow">
+        <p><strong>Breakdown for 2022</strong></p>
+        <p>Taken<i>{{DateSick.length}}</i> day</p>
+    </div>
+</div>
